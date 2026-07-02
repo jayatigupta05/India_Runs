@@ -1,0 +1,83 @@
+# Redrob Hackathon — Submission Metadata Template
+
+# ============================================================================
+# Team identity
+# ============================================================================
+team_name: "Jayati"
+
+primary_contact:
+  name: "Jayati Gupta"
+  email: "jayatgupta05@gmail.com"
+  phone: "+91-XXXXXXXXXX"
+
+team_members:
+  - name: NA
+    email: NA
+    role: NA
+
+# ============================================================================
+# Code and reproducibility
+# ============================================================================
+github_repo: "https://github.com/jayatigupta05/India_Runs.git"
+
+sandbox_link: "pass"
+
+reproduce_command: "python rank.py --candidates ./candidates.jsonl --out ./submission.csv"
+
+# ============================================================================
+# Compute environment
+# ============================================================================
+compute:
+  platform: "Local Linux / GitHub Codespaces"
+  cpu_cores: 4
+  ram_gb: 16
+  python_version: "3.11"
+  os: "Ubuntu 22.04 LTS"
+  uses_gpu_for_inference: false
+  has_network_during_ranking: false
+  pre_computation_required: false
+  pre_computation_time_minutes: 0
+
+# ============================================================================
+# AI tools declaration
+# ============================================================================
+ai_tools_used:
+  - "Claude"
+  - "ChatGPT"
+  - "Codex"
+
+ai_usage_summary: |
+  Used Claude for architecture discussion and code review.
+  Used Codex for code completion and debugging.
+  Used ChatGPT for planning.
+  All scoring weights, JD analysis, and engineering decisions were made by me.
+  No candidate data was fed to any external LLM during ranking.
+
+# ============================================================================
+# Approach summary
+# ============================================================================
+methodology_summary: |
+  Multi-signal composite ranker combining four scoring dimensions:
+  (1) Semantic fit (35%) — TF-IDF bigram cosine similarity between JD and
+  candidate narrative (headline + summary + role descriptions + skills).
+  (2) Skill fit (30%) — weighted overlap against must-have skills (embeddings,
+  vector DBs, NLP, Python, evaluation frameworks) and nice-to-haves, matched
+  against both the skills array and free text in career descriptions.
+  (3) Career fit (20%) — experience band, title relevance, anti-consulting
+  penalty, production deployment signals, location, notice period, salary fit.
+  (4) Behavioral modifier (15%) — redrob_signals as a hiring-reachability
+  multiplier: recency, open-to-work flag, recruiter response rate, GitHub
+  activity, profile completeness, verifications.
+  Honeypot detection flags impossible profiles (impossible tenure, expert
+  skills with zero duration, inflated YOE) with a 0.05x score penalty.
+  Runtime: ~46 seconds for 100K candidates on CPU, no network calls.
+
+# ============================================================================
+# Declarations
+# ============================================================================
+declarations:
+  read_submission_spec: true
+  code_is_original_work: true
+  no_collusion: true
+  honeypot_check_done: true
+  reproduction_tested: true
