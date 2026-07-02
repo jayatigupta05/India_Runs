@@ -20,7 +20,7 @@ team_members:
 # ============================================================================
 github_repo: "https://github.com/jayatigupta05/India_Runs.git"
 
-sandbox_link: "pass"
+sandbox_link: "https://redrob-jayati.streamlit.app/"
 
 reproduce_command: "python rank.py --candidates ./candidates.jsonl --out ./submission.csv"
 
